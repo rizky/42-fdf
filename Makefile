@@ -6,7 +6,7 @@
 #    By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/05/11 04:27:10 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/05/12 22:33:56 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,14 @@ FILES:= ft_fdf
 
 # ----- Libft ------
 LFTDIR:=./libft
+LFTFLAG:=-L $(LFTDIR) -l ft
+LFTINC:=-I $(LFTDIR)/include
+# ==================
+
+# ----- Libft ------
+MLXDIR:=./minilibx
+MLXFLAG:=-L $(MLXDIR) -l mlx -framework OpenGL -framework AppKit
+MLXINC:=-I $(MLXDIR)
 # ==================
 
 # ------------------
@@ -22,9 +30,9 @@ COMPILER:=gcc
 SRCPATH:=src/
 HDRPATH:=include/
 CCHPATH:=obj/
-IFLAGS:=-I $(HDRPATH) -I $(LFTDIR)/include -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit
-LFLAGS:=-L $(LFTDIR) -lft
-CFLAGS:=-Wall -Werror -Wextra $(IFLAGS)
+IFLAGS:=-I $(HDRPATH) $(LFTINC) $(MLXINC)
+LFLAGS:=$(LFTFLAG) $(MLXFLAG)
+CFLAGS:=-Wall -Wextra $(IFLAGS)
 # ==================
 
 # ----- Colors -----
@@ -45,7 +53,7 @@ CCHF:=.cache_exists
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) libft minilibx
 	@cd $(LFTDIR) && $(MAKE)
 	@echo $(CYAN) " - Compiling $@" $(RED)
 	@$(COMPILER) $(CFLAGS) $(SRC) $(LFLAGS) -o $(NAME)
@@ -61,6 +69,14 @@ $(CCHPATH)%.o: $(SRCPATH)%.c | $(CCHF)
 $(CCHF):
 	@mkdir $(CCHPATH)
 	@touch $(CCHF)
+
+libft:
+	@echo $(PURPLE) " - Compiling libft/src/* to libft/obj/*" $(PURPLE)
+	@cd $(LFTDIR) && $(MAKE) -s
+
+minilibx:
+	@echo $(PURPLE) " - Compiling minilibx" $(PURPLE)
+	@cd $(MLXDIR) && $(MAKE) -s
 
 clean:
 	@rm -rf $(CCHPATH)
