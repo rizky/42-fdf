@@ -6,7 +6,7 @@
 #    By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/05/14 18:19:36 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/05/14 22:23:48 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,8 +53,9 @@ CCHF:=.cache_exists
 
 all: $(NAME)
 
-$(NAME): $(OBJ) libft minilibx
-	@cd $(LFTDIR) && $(MAKE)
+$(NAME): $(OBJ)
+	@$(MAKE) -C libft
+	@$(MAKE) -C minilibx
 	@echo $(CYAN) " - Compiling $@" $(RED)
 	@$(COMPILER) $(CFLAGS) $(SRC) $(LFLAGS) -o $(NAME)
 	@echo $(GREEN) " - OK" $(EOC)
@@ -82,6 +83,7 @@ clean:
 	@rm -rf $(CCHPATH)
 	@rm -f $(CCHF)
 	@cd $(LFTDIR) && $(MAKE) clean
+	@cd $(MLXDIR) && $(MAKE) clean
 
 fclean: clean
 	@rm -f $(NAME)
