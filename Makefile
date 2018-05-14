@@ -6,7 +6,7 @@
 #    By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/05/12 22:33:56 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/05/14 18:19:36 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LFTFLAG:=-L $(LFTDIR) -l ft
 LFTINC:=-I $(LFTDIR)/include
 # ==================
 
-# ----- Libft ------
+# ----- MinilibX ------
 MLXDIR:=./minilibx
 MLXFLAG:=-L $(MLXDIR) -l mlx -framework OpenGL -framework AppKit
 MLXINC:=-I $(MLXDIR)
