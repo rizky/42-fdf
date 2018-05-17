@@ -6,12 +6,14 @@
 #    By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/05/14 22:23:48 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/05/17 14:05:24 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME:= fdf
-FILES:= ft_fdf
+FILES:= ft_fdf \
+		fdf_handler \
+		fdf_free
 
 # ----- Libft ------
 LFTDIR:=./libft

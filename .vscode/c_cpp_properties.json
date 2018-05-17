@@ -2,7 +2,11 @@
     "configurations": [
         {
             "name": "null",
-            "includePath": ["include"],
+            "includePath": [
+                "${workspaceFolder}/include/ft_fdf.h",
+                "${workspaceFolder}/libft/include",
+                "${workspaceFolder}/minilibx"
+            ],
             "defines": [],
             "browse": {
                 "path": [],
